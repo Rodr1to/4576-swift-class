@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXFileReference section */
-		14258E412E7251C2000676C1 /* EasyShop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EasyShop.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		14CA0BD02E8DE8970001B5AC /* EasyShop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EasyShop.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -33,16 +33,8 @@
 			isa = PBXGroup;
 			children = (
 				14258E432E7251C2000676C1 /* EasyShop */,
-				14258E422E7251C2000676C1 /* Products */,
+				14CA0BD02E8DE8970001B5AC /* EasyShop.app */,
 			);
-			sourceTree = "<group>";
-		};
-		14258E422E7251C2000676C1 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				14258E412E7251C2000676C1 /* EasyShop.app */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -67,7 +59,7 @@
 			packageProductDependencies = (
 			);
 			productName = EasyShop;
-			productReference = 14258E412E7251C2000676C1 /* EasyShop.app */;
+			productReference = 14CA0BD02E8DE8970001B5AC /* EasyShop.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -95,7 +87,7 @@
 			mainGroup = 14258E382E7251C2000676C1;
 			minimizedProjectReferenceProxies = 1;
 			preferredProjectObjectVersion = 77;
-			productRefGroup = 14258E422E7251C2000676C1 /* Products */;
+			productRefGroup = 14258E382E7251C2000676C1;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
