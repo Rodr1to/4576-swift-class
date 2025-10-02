@@ -11,6 +11,9 @@ struct Home: View {
     
     let categories = ["All", "Men", "Women", "Boys", "Girls"]
     
+    @State var selectedCategory = "All"
+    @State var selectedProduct: Product? = nil
+    
     var body: some View {
         VStack{
             HStack{
@@ -75,7 +78,12 @@ struct Home: View {
                 ScrollView(.horizontal) {
                     HStack {
                         ForEach(categories, id: \.self) {category in
-                            CategoryChip(name: category)
+                            CategoryChip(
+                                name: category,
+                                selected: selectedCategory == category
+                            ).onTapGesture {
+                                selectedCategory = category
+                            }
                         }
                     }.padding(EdgeInsets(top: 0, leading: 16, bottom: 16, trailing: 16))
                 }.scrollIndicators(.hidden)
@@ -105,11 +113,18 @@ struct Home: View {
                 ]) {
                     ForEach(products, id: \.self.name) { product in
                         ProductCard(product: product)
+                            .onTapGesture {
+                                selectedProduct = product
+                            }
                         
                     }
                 }.padding(.horizontal)
             }.scrollIndicators(.hidden)
         }
+        .navigationDestination(item: $selectedProduct) { product in
+            ProductDetail(product: product)
+        }
+        .navigationBarBackButtonHidden()
     }
 }
 

@@ -18,7 +18,7 @@ struct Banner: View {
                 
                 Button(action: {}) {
                     Text("Shop now")
-                        .tint(.white)
+                        .foregroundStyle(.background)
                         .padding()
                         .background(.black)
                         .clipShape(RoundedRectangle(cornerRadius: 16))
@@ -32,10 +32,11 @@ struct Banner: View {
                 .frame(height: 192)
             
         }
+        .tint(.primary)
         .frame(maxWidth: .infinity)
         .background(.ultraThinMaterial, in :
                         RoundedRectangle(cornerRadius: 16))
-        .padding(.horizontal)
+        .padding()
         
     }
 }

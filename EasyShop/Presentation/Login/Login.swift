@@ -61,7 +61,7 @@ struct Login: View {
             
             Button(action: {}) {
                 NavigationLink (destination: {
-                    Home()
+                    Main()
                 }) {
                     Text("Sign in")
                         .padding(EdgeInsets(top: 16, leading: 32, bottom: 16, trailing: 32))

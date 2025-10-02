@@ -5,7 +5,7 @@
 //  Created by Rodrigo Valverde on 9/17/2025.
 //
 
-struct Product {
+struct Product: Hashable {
     let name: String
     let price: Double
     let image: String
