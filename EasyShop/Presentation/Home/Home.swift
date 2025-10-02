@@ -53,6 +53,10 @@ struct Home: View {
             }.padding(.horizontal)
             
             ScrollView(.vertical) {
+                
+                Banner()
+                    
+                
                 HStack {
                     Text("Categories")
                         .font(.title)
@@ -77,32 +81,7 @@ struct Home: View {
                 }.scrollIndicators(.hidden)
                 
                 
-                HStack {
-                    VStack {
-                        Text("Get your special sale today!")
-                            .font(.title)
-                            .bold()
-                        
-                        Button(action: {}) {
-                            Text("Shop now")
-                                .tint(.white)
-                                .padding()
-                                .background(.black)
-                                .clipShape(RoundedRectangle(cornerRadius: 16))
-                            
-                        }
-                    }
-                    
-                    Image("banner")
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(height: 192)
-                    
-                }
-                .frame(maxWidth: .infinity)
-                .background(.ultraThinMaterial, in :
-                                RoundedRectangle(cornerRadius: 16))
-                .padding(.horizontal)
+                
                 
                 HStack {
                     Text("Products")
