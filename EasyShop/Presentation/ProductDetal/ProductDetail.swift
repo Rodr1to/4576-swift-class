@@ -10,6 +10,8 @@ struct ProductDetail: View {
     @StateObject var viewModel = ProductDetailViewModel()
     @EnvironmentObject var cartViewModel: CartViewModel
     
+    @State var showConfirmation = false
+    
     let product: Product
     
     var body: some View {
@@ -75,6 +77,7 @@ struct ProductDetail: View {
             HStack{
                 Button(action: {
                     cartViewModel.addCartItem(product: product, quantity: viewModel.quantity)
+                    showConfirmation.toggle()
                 }) {
                     Text("Add to cart")
                         .frame(maxWidth: .infinity)
@@ -99,7 +102,10 @@ struct ProductDetail: View {
                 }
             }.padding()
         }
-        
+        .sheet(isPresented: $showConfirmation) {
+            Text("Item added to cart!")
+                .presentationDetents([.fraction(0.5)])
+        }
     }
 }
 #Preview {
