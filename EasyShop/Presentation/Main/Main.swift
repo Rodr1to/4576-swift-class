@@ -19,7 +19,7 @@ struct Main: View {
             }
             
             Tab("Shopping", systemImage: "bag") {
-                Cart()
+                CartView()
             }
             
             Tab("Profile", systemImage: "person") {

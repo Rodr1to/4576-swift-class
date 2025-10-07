@@ -14,6 +14,7 @@ struct OnBoarding: View {
             VStack {
                 Image("intro")
                     .resizable()
+                    .scaledToFit()
                     .frame(maxWidth: .infinity)
                 
                 Button(action: {}) {
@@ -50,4 +51,5 @@ struct OnBoarding: View {
 
 #Preview {
     OnBoarding()
+        .environmentObject(CartViewModel())
 }
