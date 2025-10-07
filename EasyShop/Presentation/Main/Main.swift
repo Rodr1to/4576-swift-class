@@ -8,9 +8,34 @@
 import SwiftUI
 
 struct Main: View {
+    @EnvironmentObject var router: AppRouter
+    
     var body: some View {
-        TabView {
-            Tab("Home", systemImage: "house") {
+        TabView (selection: $router.selectedTab) {
+            
+            Home()
+                .tabItem{
+                    Label("Home", systemImage: "house")
+                }
+                .tag(0)
+            Text("Favorites")
+                .tabItem {
+                    Label("Favorites", systemImage: "heart")
+                }
+                .tag(1)
+            CartView()
+                .tabItem{
+                    Label("Shopping", systemImage: "bag")
+                }
+                .tag(2)
+            Text("Profile")
+                .tabItem {
+                    Label("Profile", systemImage: "person")
+                }
+                .tag(3)
+            
+            
+            /*Tab("Home", systemImage: "house") {
                 Home()
             }
             
@@ -25,13 +50,18 @@ struct Main: View {
             Tab("Profile", systemImage: "person") {
                 
             }
+             */
         }
         .navigationBarBackButtonHidden()
         .tint(.black)
     }
 }
 
-
 #Preview {
     Main()
+        .environmentObject(AppRouter())
+}
+
+class AppRouter: ObservableObject {
+    @Published var selectedTab = 0
 }
