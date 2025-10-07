@@ -11,7 +11,9 @@ struct ProductDetail: View {
     @StateObject var viewModel = ProductDetailViewModel()
     @EnvironmentObject var cartViewModel: CartViewModel
     @State var showConfirmation = false
-    
+    @Environment(\.dismiss) var dismiss
+    @EnvironmentObject var router: AppRouter
+
     let product: Product
     
     var body: some View {
@@ -64,16 +66,13 @@ struct ProductDetail: View {
                             .bold()
                         
                         Spacer()
-                        
                     }.padding()
                     
                     Text(product.description)
                         .padding(.horizontal)
-                    
                 }
-                
-                
             }
+            
             HStack{
                 Button(action: {
                     cartViewModel.addCartItem(product: product, quantity: viewModel.quantity)
@@ -98,29 +97,32 @@ struct ProductDetail: View {
                         .padding()
                         .background(.black)
                         .clipShape(RoundedRectangle(cornerRadius: 16))
-                    
                 }
             }.padding()
         }
         .sheet(isPresented: $showConfirmation) {
-            CartItemConfirmation(product: product, quantity: viewModel.quantity)
+            CartItemConfirmation(product: product, quantity: viewModel.quantity) {
+                showConfirmation.toggle()
+                dismiss()
+                router.selectedTab = 2
+            }
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
                 .background(.white)
                 .presentationDetents([.fraction(0.35)])
         }
     }
 }
+
 #Preview {
     ProductDetail(product: products[1])
         .environmentObject(CartViewModel())
 }
 
-
 struct CartItemConfirmation: View {
-    @EnvironmentObject var router: AppRouter
-    
     let product: Product
     let quantity: Int
+    let dismissAction: () -> Void
+
     var body: some View{
         VStack (alignment: .leading) {
             Text("Added to cart")
@@ -153,10 +155,7 @@ struct CartItemConfirmation: View {
             .padding(.horizontal)
             
             
-            Button(action: {
-                router.selectedTab = 2
-                
-            }) {
+            Button(action: dismissAction) {
                 Text("View cart")
                     .frame(maxWidth: .infinity)
                     .tint(.white)
@@ -166,11 +165,6 @@ struct CartItemConfirmation: View {
                     .clipShape(RoundedRectangle(cornerRadius: 16))
                     .padding(.horizontal)
             }
-            
-            
-            
-            
         }
-        
     }
 }
