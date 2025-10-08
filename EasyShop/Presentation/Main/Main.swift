@@ -59,7 +59,6 @@ struct Main: View {
 
 #Preview {
     Main()
-        .environmentObject(AppRouter())
 }
 
 class AppRouter: ObservableObject {
